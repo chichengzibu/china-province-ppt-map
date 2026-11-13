@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>行政区划 2.5D 科技地图生成器</title>
+<style>
+  :root{
+    --bg:#0b1f3a; --panel:#0e2a4d; --line:#3a6ea5; --txt:#cfe6ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Source Han Sans SC",sans-serif;background:#06121f;color:var(--txt);}
+  #app{display:flex;flex-direction:column;height:100vh;}
+  header{display:flex;align-items:center;gap:14px;padding:10px 18px;background:linear-gradient(90deg,#0a2240,#0e2a4d);border-bottom:1px solid #1c3b63;flex-wrap:wrap;}
+  header h1{font-size:15px;font-weight:600;margin:0;letter-spacing:1px;color:#eaf4ff;white-space:nowrap;}
+  header .grp{display:flex;align-items:center;gap:8px;}
+  select,button{font-family:inherit;font-size:13px;color:#eaf4ff;background:#102f55;border:1px solid #2c568c;border-radius:6px;padding:6px 10px;cursor:pointer;}
+  select{min-width:150px;}
+  button:hover{background:#173e6e;}
+  button.primary{background:#1f6fd0;border-color:#3a8ae0;}
+  button.primary:hover{background:#2a7fe0;}
+  label.chk{display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer;user-select:none;}
+  .hint{font-size:12px;color:#7fa8d6;}
+  #stage{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#06121f;}
+  svg{width:100%;height:100%;display:block;}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>行政区划 2.5D 科技地图生成器</h1>
+    <div class="grp">
+      <span class="hint">省份 / 直辖市：</span>
+      <select id="prov"></select>
+    </div>
+    <div class="grp">
+      <span class="hint">配色：</span>
+      <select id="palette"></select>
+      <span class="hint">模式：</span>
+      <select id="colorMode">
+        <option value="h">渐变·水平</option>
+        <option value="d">渐变·对角</option>
+        <option value="r">渐变·径向</option>
+        <option value="s">纯色</option>
+      </select>
+    </div>
+    <div class="grp">
+      <label class="chk"><input type="checkbox" id="showName" /> 显示省名</label>
+      <label class="chk"><input type="checkbox" id="showDeco" checked /> 背景装饰</label>
+      <label class="chk"><input type="checkbox" id="provOnly" /> 仅省份(透明底)</label>
+    </div>
+    <div class="grp">
+      <span class="hint">立体厚度</span>
+      <input type="range" id="thick" min="0" max="40" value="16" style="width:110px" />
+    </div>
+    <div class="grp">
+      <button class="primary" id="exportBtn">导出 PNG (2x)</button>
+      <button id="export4">导出 PNG (4x)</button>
+    </div>
+  </header>
+  <div id="stage">
+    <svg id="map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid meet"></svg>
+  </div>
+</div>
+<script src="geo-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

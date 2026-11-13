@@ -1,0 +1,10 @@
+# 依赖
+node_modules/
+
+# 生成产物 / 锁文件
+package-lock.json
+*.log
+
+# 批量渲染 / 展示输出（可由脚本重新生成）
+output/
+preview/
