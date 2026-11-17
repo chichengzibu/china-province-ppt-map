@@ -12,6 +12,30 @@
 - **「仅省份」模式**：透明背景、不显示市 / 区划分界线、只显示省名（适合做素材）
 - **一键导出**：2x / 4x PNG，透明底模式导出真实透明背景
 
+## 🖥 运行界面预览
+
+打开 `index.html` 即可看到如下界面（顶部工具栏可切换省份、配色、模式、立体厚度并导出图片）：
+
+**默认界面 · 辽宁省（科技蓝 + 水平渐变）**
+
+![默认界面-辽宁省](screenshots/01-ui-default-liaoning.png)
+
+**切换配色 · 吉林省（霞光：紫 → 品红 → 橙金）**
+
+![切换配色-吉林省霞光](screenshots/02-ui-palette-sunset-jilin.png)
+
+**「仅省份(透明底)」模式 · 上海市（无市区线，只显示省名）**
+
+![仅省份透明模式-上海市](screenshots/03-ui-province-only-shanghai.png)
+
+## 🎨 生成效果展示
+
+| 常规 2.5D 立体地图（吉林省） | 仅省份透明底（上海市） |
+| --- | --- |
+| ![吉林2.5D效果](screenshots/04-result-jilin-2.5d.png) | ![上海透明效果](screenshots/05-result-shanghai-transparent.png) |
+
+> 更多配色与省份成品图可在本地运行 `node render.js` 生成（见下方「批量导出图片」）。
+
 ## 🚀 快速开始（零依赖）
 
 直接用浏览器打开 `index.html` 即可使用：
@@ -33,7 +57,9 @@
 | `data/` | 原始行政边界 GeoJSON（用于重新生成 `geo-data.js`） |
 | `process.py` | 数据处理脚本：精简坐标、生成 `geo-data.js` |
 | `render.js` | 批量渲染脚本（Node + Playwright） |
+| `screenshot_ui.js` | 运行界面截图脚本（Node + Playwright） |
 | `verify.js` | 透明底像素校验脚本 |
+| `screenshots/` | README 中展示的界面截图与效果图 |
 | `package.json` | Node 依赖声明 |
 
 ## 🛠 进阶：重新生成边界数据
